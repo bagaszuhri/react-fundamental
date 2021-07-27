@@ -15,6 +15,14 @@ function App() {
     {title: 'semangka', count: 1}
   ])
 
+  const handleAdditionCount = (index) => {
+    const newTodos = [...todos]
+
+    newTodos[index].count = newTodos[index].count + 1
+
+    setTodos(newTodos)
+  }
+
   return (
     <>
 
@@ -52,7 +60,7 @@ function App() {
                     <img src={minusIcon} alt="minus icon" />
                   </button>
 
-                  <button className="todo-action-button">
+                  <button onClick={ () => handleAdditionCount(index)} className="todo-action-button">
                     <img src={plusIcon} alt="plus icon" />
                   </button>
 
