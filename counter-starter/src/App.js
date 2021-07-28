@@ -15,10 +15,30 @@ function App() {
     {title: 'semangka', count: 1}
   ])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const addedTodos = [...todos, {
+      title:value,
+      count: 1
+    }]
+
+    setTodos(addedTodos)
+  }
+
+
   const handleAdditionCount = (index) => {
     const newTodos = [...todos]
 
     newTodos[index].count = newTodos[index].count + 1
+
+    setTodos(newTodos)
+  }
+
+  const handleSubstractionCount =  (index) => {
+    const newTodos = [...todos]
+
+    newTodos[index].count = newTodos[index].count - 1
 
     setTodos(newTodos)
   }
@@ -32,7 +52,7 @@ function App() {
       </nav>
 
       <section className="container">
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <input
             onChange={(e) =>{setValue(e.target.value)}}
             value={value} 
@@ -56,7 +76,7 @@ function App() {
 
                   <div className="todo-count">{todo.count}</div>
 
-                  <button className="todo-action-button">
+                  <button onClick={ () => handleSubstractionCount(index)} className="todo-action-button">
                     <img src={minusIcon} alt="minus icon" />
                   </button>
 
