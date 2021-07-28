@@ -18,12 +18,18 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    if(!value){
+      alert('mohon isi sesuatu')
+        return
+    }
+
     const addedTodos = [...todos, {
       title:value,
       count: 1
     }]
 
     setTodos(addedTodos)
+    setValue('')
   }
 
 
@@ -38,7 +44,12 @@ function App() {
   const handleSubstractionCount =  (index) => {
     const newTodos = [...todos]
 
-    newTodos[index].count = newTodos[index].count - 1
+    if(newTodos[index].count > 0) {
+      newTodos[index].count = newTodos[index].count - 1
+    }else{
+      newTodos.splice(index, 1)
+    }
+
 
     setTodos(newTodos)
   }
