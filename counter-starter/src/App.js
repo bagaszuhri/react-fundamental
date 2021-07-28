@@ -45,14 +45,25 @@ function App() {
     const newTodos = [...todos]
 
     if(newTodos[index].count > 0) {
+      // melakukan pengurangan sampai bataas 0
       newTodos[index].count = newTodos[index].count - 1
     }else{
+      // melakukan fungsi penghapusan jika terus dikurangi ketika mencapai 0
       newTodos.splice(index, 1)
     }
 
 
     setTodos(newTodos)
   }
+
+  const getTotalCount = () => {
+    const totalCounts = todos.reduce((total, num) => {
+      return total + num.count
+    }, 0)
+
+    return totalCounts
+  }
+
 
   return (
     <>
@@ -73,6 +84,23 @@ function App() {
           />
           <button className="add-button" type="submit">Add</button>
         </form>
+      
+      <div className="info">
+        <div className="info-total">
+          <p>{`Total List: ${todos.length}`}</p>
+        </div>
+
+        <div className="info-total">
+          <p>{`Total Counts: ${getTotalCount()}`}</p>
+        </div>
+
+        <button onClick={() => setTodos([]) } className="delete-all-list">
+          Delete All List
+        </button>
+
+      </div>
+
+
 
 
         {todos.length > 0 ? (
