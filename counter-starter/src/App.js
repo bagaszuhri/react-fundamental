@@ -3,7 +3,9 @@ import classname from 'classnames'
 
 import './App.css';
 
-import  shoppingIcon from './assets/shopping-icon.svg';
+import Navbar from './components/Navbar';
+import Container from './components/Container';
+
 import plusIcon from './assets/plus-icon.svg';
 import minusIcon from './assets/minus-icon.svg';
 
@@ -68,12 +70,9 @@ function App() {
   return (
     <>
 
-      <nav className="nav">
-        <img className="nav-icon" src={shoppingIcon} alt="shopping icon"/>
-        <h1 className="nav-title">Shopping List</h1>
-      </nav>
+      <Navbar />
 
-      <section className="container">
+      <Container>
         <form className="form" onSubmit={handleSubmit}>
           <input
             onChange={(e) =>{setValue(e.target.value)}}
@@ -133,7 +132,7 @@ function App() {
         ) : (
           <div>Kosong</div>
         )}
-      </section>
+      </Container>
 
     </>
   );
