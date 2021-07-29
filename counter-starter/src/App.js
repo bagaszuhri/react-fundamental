@@ -6,6 +6,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Container from './components/Container';
 import SearchInput from './components/SearchInput'
+import Info from './components/Info';
 
 import plusIcon from './assets/plus-icon.svg';
 import minusIcon from './assets/minus-icon.svg';
@@ -78,25 +79,13 @@ function App() {
           onSubmit={handleSubmit}
           onChange={(e) =>{setValue(e.target.value)}}
           value={value}
-        />        
-      
-      <div className="info">
-        <div className="info-total">
-          <p>{`Total List: ${todos.length}`}</p>
-        </div>
+        />       
 
-        <div className="info-total">
-          <p>{`Total Counts: ${getTotalCount()}`}</p>
-        </div>
-
-        <button onClick={() => setTodos([]) } className="delete-all-list">
-          Delete All List
-        </button>
-
-      </div>
-
-
-
+        <Info
+          todosLength={todos.length}
+          totalCount={getTotalCount()}
+          onDelete={() => setTodos([])}
+        />
 
         {todos.length > 0 ? (
           <div className="todos">
